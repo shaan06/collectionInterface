@@ -26,8 +26,12 @@ public class LIFO {
     // add to the top of the array
     public void add(int x) {
         if (isFull()) {
-            System.out.println("array Overflow");
-            throw new ArrayIndexOutOfBoundsException();
+            int s = 2*maxCapacity;
+            int[] newA = new int[s];
+            for(int i =0;i<a.length;i++)
+                newA[i] = a[i];
+            a = newA;
+            a[++top] = x;
         } else {
             a[++top] = x;
             size++;
@@ -39,7 +43,6 @@ public class LIFO {
 
     // removes the top of the array and returns it.
     public int get() {
-
         if (isEmpty()) {
             System.out.println("array Underflow");
             throw new ArrayIndexOutOfBoundsException();

@@ -60,15 +60,12 @@ public class FifoTest {
         assertEquals("Always get the first/old entry ",10,ff.get());
     }
     @Test
-    public void testExceptionAdd(){
+    public void testNewSizeAdd(){
      final FIFO ff = new FIFO(2);
         ff.add(10);
         ff.add(20);
-        Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, new Executable() {
-            public void execute()  {
-                ff.add(10);
-            }
-        });
+        ff.add(30);
+        assertEquals(10,ff.get());
     }
     @Test
     public void testExceptionGet(){

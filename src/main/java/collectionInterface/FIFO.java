@@ -26,12 +26,20 @@ public class FIFO {
     public void add(int x){
 
         if(isFull()){
-            System.out.println("Array Overflow");
-            throw new ArrayIndexOutOfBoundsException();
+           int s = 2*maxCapacity;
+           int[] newA = new int[s];
+           for(int i =0;i<a.length;i++)
+                newA[i] = a[i];
+           a = newA;
+           back = (back+1)%s;
+           a[back] = x;
+           size++;
         }
-        back = (back+1)%maxCapacity;
-        a[back] = x;
-        size++;
+        else {
+            back = (back + 1) % maxCapacity;
+            a[back] = x;
+            size++;
+        }
     }
 
     // Gets the number from the top of the array.

@@ -49,17 +49,14 @@ public class LifoTest {
         assertEquals("Decrement size when element is removed",0,lf.size());
     }
     @Test
-    public void testAddException(){
+    public void testNewSizeAdd(){
         final LIFO lf = new LIFO(4);
-        lf.add(10);
-        lf.add(10);
-        lf.add(10);
-        lf.add(10);
-        Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, new Executable() {
-            public void execute()  {
-                lf.add(10);
-            }
-        });
+        lf.add(4);
+        lf.add(3);
+        lf.add(2);
+        lf.add(1);
+        lf.add(20);
+        assertEquals("Since array is full",20,lf.get());
     }
     @Test
     public void testGetException(){
