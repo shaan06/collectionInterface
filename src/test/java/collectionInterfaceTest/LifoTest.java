@@ -45,8 +45,9 @@ public class LifoTest {
     public void testSizeDecrement(){
         LIFO lf = new LIFO(10);
         lf.add(10);
+        lf.add(20);
         lf.get();
-        assertEquals("Decrement size when element is removed",0,lf.size());
+        assertEquals("Decrement size when element is removed",1,lf.size());
     }
     @Test
     public void testNewSizeAdd(){
