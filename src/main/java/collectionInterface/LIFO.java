@@ -25,14 +25,17 @@ public class LIFO {
 
     // add to the top of the array
     public void add(int x) {
+        //  Whenever array is full new arraty is created with twice the original array size and reference is copied to old array
         if (isFull()) {
             int s = 2*maxCapacity;
+            maxCapacity = s;
             int[] newA = new int[s];
-            for(int i =0;i<a.length;i++)
+            for(int i =0;i<a.length;i++) {
                 newA[i] = a[i];
+            }
             a = newA;
             a[++top] = x;
-			size++;
+            size++;
         } else {
             a[++top] = x;
             size++;

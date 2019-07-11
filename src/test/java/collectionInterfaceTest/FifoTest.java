@@ -43,7 +43,7 @@ public class FifoTest {
     }
     @Test
     public void testGet(){
-        FIFO ff = new FIFO(4);
+        FIFO ff = new FIFO(10);
         ff.add(2);
         ff.add(19);
         ff.add(1);
@@ -52,7 +52,7 @@ public class FifoTest {
     }
     @Test
     public void testGet2() {
-        FIFO ff = new FIFO(2);
+        FIFO ff = new FIFO(10);
         ff.add(20);
         ff.add(10);
         ff.get();
@@ -61,24 +61,26 @@ public class FifoTest {
     }
     @Test
     public void testNewSizeAdd(){
-     final FIFO ff = new FIFO(2);
+     final FIFO ff = new FIFO(1);
         ff.add(10);
         ff.add(20);
         ff.add(30);
+        ff.add(40);
+        ff.add(50);
         assertEquals(10,ff.get());
     }
     @Test
     public void testExceptionGet(){
         Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, new Executable() {
             public void execute()  {
-                FIFO ff = new FIFO(10);
+                FIFO ff = new FIFO(1);
                 ff.get();
             }
         });
     }
     @Test
     public void testAddNew(){
-        FIFO ff = new FIFO(2);
+        FIFO ff = new FIFO(10);
         ff.add(1);
         ff.add(2);
         ff.get();

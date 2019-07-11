@@ -50,13 +50,16 @@ public class LifoTest {
     }
     @Test
     public void testNewSizeAdd(){
-        final LIFO lf = new LIFO(4);
+        final LIFO lf = new LIFO(1);
         lf.add(4);
         lf.add(3);
         lf.add(2);
         lf.add(1);
         lf.add(20);
-        assertEquals("Since array is full",20,lf.get());
+        lf.add(30);
+        lf.add(40);
+        lf.add(45);
+        assertEquals("Since array is full",45,lf.get());
     }
     @Test
     public void testGetException(){

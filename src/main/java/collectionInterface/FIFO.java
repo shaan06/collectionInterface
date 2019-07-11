@@ -26,7 +26,9 @@ public class FIFO {
     public void add(int x){
 
         if(isFull()){
+            //  Whenever array is full new arraty is created with twice the original array size and reference is copied to old array
            int s = 2*maxCapacity;
+           maxCapacity = s;
            int[] newA = new int[s];
            for(int i =0;i<a.length;i++)
                 newA[i] = a[i];
