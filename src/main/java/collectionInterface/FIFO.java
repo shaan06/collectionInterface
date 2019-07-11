@@ -25,8 +25,9 @@ public class FIFO {
     // Add the number to the rear of the array.
     public void add(int x){
 
-        if(isFull()){
-            //  Whenever array is full new arraty is created with twice the original array size and reference is copied to old array
+        //  Whenever array is full new arraty is created with twice the original array size and reference is copied to old array
+        if(isFull())
+        {
            int s = 2*maxCapacity;
            maxCapacity = s;
            int[] newA = new int[s];
@@ -38,6 +39,7 @@ public class FIFO {
            size++;
         }
         else {
+
             back = (back + 1) % maxCapacity;
             a[back] = x;
             size++;
@@ -47,7 +49,8 @@ public class FIFO {
     // Gets the number from the top of the array.
     public int get(){
 
-      if(isEmpty()){
+      if(isEmpty())
+        {
             System.out.println("Array Underflow");
             throw new ArrayIndexOutOfBoundsException();
         }
