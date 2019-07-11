@@ -37,8 +37,7 @@ public class LIFO {
             a = newA;
             a[++top] = x;
             size++;
-        } else
-            {
+        } else {
             a[++top] = x;
             size++;
         }

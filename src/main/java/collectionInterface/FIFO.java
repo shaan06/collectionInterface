@@ -25,7 +25,7 @@ public class FIFO {
     // Add the number to the rear of the array.
     public void add(int x){
 
-        //  Whenever array is full new arraty is created with twice the original array size and reference is copied to old array
+        //  Whenever array is full new array is created with twice the original array size and reference is copied to old array
         if(isFull())
         {
            int s = 2*maxCapacity;
