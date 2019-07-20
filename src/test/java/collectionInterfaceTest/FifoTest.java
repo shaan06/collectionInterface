@@ -10,7 +10,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class FifoTest {
-    FIFO ff;
+    private FIFO ff;
     @Before
     public void Initialise(){
         ff = new FIFO(1);
@@ -45,17 +45,17 @@ public class FifoTest {
     }
     @Test
     public void testSize2(){
-        ff.add(10);
+        ff.add("test");
         ff.get();
         assertEquals("Delete the first/old element and returns it, and decrement the size",0,ff.size());
     }
     @Test
     public void testGet(){
-        ff.add(2);
+        ff.add("Test");
         ff.add(19);
         ff.add(1);
         ff.add(20);
-        assertEquals("Get the first/old entry in the array",2,ff.get());
+        assertEquals("Get the first/old entry in the array","Test",ff.get());
     }
     @Test
     public void testGet2() {

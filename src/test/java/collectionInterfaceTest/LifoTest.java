@@ -9,7 +9,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LifoTest {
-    LIFO lf;
+    private LIFO lf;
+
     @Before
     public void Initialise(){
       lf = new LIFO(1);
