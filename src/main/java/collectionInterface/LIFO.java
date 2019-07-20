@@ -1,60 +1,34 @@
 package collectionInterface;
-
-public class LIFO {
-    private int maxCapacity;
+public class LIFO<E> extends Operations {
     private int top;
-    private int size = 0;
-    private int a[];
-
-
-    public boolean isEmpty()
-    {
-        return (size == 0);
-    }
-
     //Constructor
     public LIFO(int c){
-        top = -1;
-       this.maxCapacity = c;
-       a = new int[maxCapacity];
-    }
-
-    public boolean isFull(){
-        return size == maxCapacity;
-    }
-
-    // add to the top of the array
-    public void add(int x) {
-        //  Whenever array is full new array is created with twice the size of original array and reference is copied to old array
-        if (isFull())
-        {
-            int s = 2*maxCapacity;
-            maxCapacity = s;
-            int[] newA = new int[s];
-            for(int i =0;i<a.length;i++) {
-                newA[i] = a[i];
-            }
-            a = newA;
-            a[++top] = x;
-            size++;
-        } else {
-            a[++top] = x;
-            size++;
+        if(c > 0) {
+            this.maxCapacity = c;
+            a = new Object[maxCapacity];
         }
+        else{
+            throw new NegativeArraySizeException();
+        }
+        top = -1;
     }
-
-    // returns the size of the array thats filled.
-    public int size(){ return size; }
-
+    // add to the top of the array
+    public void add(Object x) {
+        resize();
+        //  Whenever array is full new array is created with twice the size of original array and reference is copied to old array
+        a[++top] = x;
+        size++;
+    }
     // removes the top of the array and returns it.
-    public int get() {
+    public Object get() {
         if (isEmpty()) {
             System.out.println("array Underflow");
-            throw new ArrayIndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException("It is Empty");
         } else {
-            int x = a[top--];
+            E e = (E) a[top--];
             size--;
-            return x;
+            return e;
         }
     }
+
 }

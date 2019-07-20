@@ -1,6 +1,6 @@
 package collectionInterfaceTest;
-
 import collectionInterface.LIFO;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
@@ -9,49 +9,54 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LifoTest {
-
+    LIFO lf;
+    @Before
+    public void Initialise(){
+      lf = new LIFO(1);
+    }
     @Test
     public void testSize(){
-        LIFO lf = new LIFO(10);
         assertEquals("when the array is empty size should always be zero",0, lf.size());
     }
     @Test
     public void testIsEmpty(){
-        LIFO lf = new LIFO(10);
         assertTrue("When no element is added, stack is empty", lf.isEmpty());
     }
     @Test
     public void testAdd(){
-        LIFO lf = new LIFO(10);
-        lf.add(10);
+        lf.add(4.3);
         assertEquals("Size should increment as element is added",1, lf.size());
-        lf.add(20);
+        lf.add(5.6);
         assertEquals("Size should increment as element is added",2,lf.size());
     }
     @Test
+    public void testNegativeSize(){
+        Assertions.assertThrows(NegativeArraySizeException.class, new Executable() {
+            public void execute()  {
+                lf = new LIFO(-2);
+            }
+        });
+    }
+    @Test
     public void testIsEmptyFalse(){
-        LIFO lf = new LIFO(10);
         lf.add(10);
         assertFalse("Element is added hence array is not empty",lf.isEmpty());
     }
     @Test
     public void testGet(){
-        LIFO lf = new LIFO(10);
         lf.add(10);
         lf.add(20);
         assertEquals("Always get the latest entry",20,lf.get());
     }
     @Test
     public void testSizeDecrement(){
-        LIFO lf = new LIFO(10);
-        lf.add(10);
-        lf.add(20);
+        lf.add(4.5);
+        lf.add(0.04);
         lf.get();
         assertEquals("Decrement size when element is removed",1,lf.size());
     }
     @Test
     public void testNewSizeAdd(){
-        final LIFO lf = new LIFO(1);
         lf.add(4);
         lf.add(3);
         lf.add(2);
@@ -59,21 +64,20 @@ public class LifoTest {
         lf.add(20);
         lf.add(30);
         lf.add(40);
-        lf.add(45);
-        assertEquals("Since array is full",45,lf.get());
+        lf.add("Shantanu");
+        assertEquals("Since array is full","Shantanu",lf.get());
     }
     @Test
     public void testGetException(){
         Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, new Executable() {
             public void execute()  {
-                LIFO lf = new LIFO(10);
+
                 lf.get();
             }
         });
     }
     @Test
     public void testGet2(){
-        LIFO lf = new LIFO(10);
         lf.add(10);
         lf.add(20);
         lf.get();
@@ -82,7 +86,6 @@ public class LifoTest {
     }
     @Test
     public void testAddNew(){
-        LIFO lf = new LIFO(2);
         lf.add(2);
         lf.add(3);
         lf.get();
